@@ -1,50 +1,71 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: 1.6.1 → 1.6.2
+- Modified sections:
+    - None (Template-only change)
+- Templates requiring updates:
+    - ✅ .specify/templates/tasks-template.md
+- Follow-up TODOs: None
+-->
+# silent-places Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Mobile-First PWA
+The project is a mobile-first progressive web app (PWA), ensuring a seamless experience on all devices.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Performance-Obsessed
+The application must be optimized for speed, with the goal of achieving a perfect 100 in the Lighthouse performance category.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Holistic Quality
+Strive for a perfect 100 Lighthouse score in accessibility, best practices, and SEO.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Keep It Stupid Simple (KISS)
+All design and implementation decisions must follow the "Keep It Stupid Simple" (KISS) principle.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Clean Architecture
+The codebase will adhere to a simplified interpretation of Clean Code and Atomic Design principles to ensure a decoupled, maintainable, and scalable component architecture.
+-   **Layered Components:** A strict layering system is enforced. Application-level components (e.g., pages, organisms) MUST only be built by composing components from the `base` and `ui` layers.
+-   **`src/components/base`:** This directory contains foundational layout components and "atoms" (e.g., `Container`, `HStack`, `Text`). These are the ONLY components allowed to directly use the underlying UI library (e.g., Chakra UI, Material UI) and are solely responsible for applying the project's design system (colors, typography, etc.).
+-   **`src/components/ui`:** This directory contains interactive UI elements and "molecules" (e.g., `Button`, `Card`, `Select`), which are composed from `base` components.
+-   **Strict Encapsulation:** Higher-level components (pages, organisms) MUST NOT directly access the underlying UI library. This encapsulation ensures that the UI library can be swapped without refactoring the entire application.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### VI. Content as Code
+All application text (menus, sections, etc.) is managed as code. Content is stored in local Markdown files with front-matter within the `src/content` directory. This approach enables version control, collaboration, and compatibility with git-based CMS workflows. Internationalization (i18n) is handled via language-specific subfolders (e.g., `src/content/en`, `src/content/fr`).
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### VII. Web Standards First
+To maintain simplicity and leverage the modern web platform, this project exclusively targets evergreen browsers. Development MUST prioritize standardized, modern web APIs (e.g., `fetch`) over obsolete or non-standard alternatives. Any third-party library that relies on polyfills or deprecated features MUST be avoided to ensure the smallest possible bundle size and adherence to web standards.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### VIII. Documented & Readable Code
+Code is written for humans first.
+-   **JSDoc:** Every function and method MUST have a JSDoc block explaining its purpose and parameters.
+-   **Component Props:** All component props MUST be defined in an interface, with each property having a clear JSDoc description.
+-   **Naming:** Variable and function names MUST be clear and self-explanatory.
+-   **Directory Documentation:** Every key directory MUST contain a `README.md` file that explains the contents, purpose, and any rules associated with that directory.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Technical Stack
+
+To align with our principles of Performance and Simplicity (KISS), the following technical stack is mandated:
+
+*   **Language:** TypeScript is the single language for both backend and frontend code.
+*   **Runtime & Tooling:** `bun` is the exclusive runtime, test runner, and builder. All scripts in `package.json` MUST be executed via `bun`.
+*   **Content:** `content-collections` is used to validate and load all application content from local Markdown files.
+*   **Schema Validation:** `arktype` is the standard library for all data and schema validation.
+*   **Testing:** Unit tests MUST use the `bun test` API. Test files will be co-located with their corresponding source files and use the `.spec.ts` extension.
+*   **Linting/Formatting:** BiomeJS will be used for all code linting and formatting, replacing any other tools like ESLint or Prettier.
+
+## Development Standards
+
+* **Testing:** To maintain simplicity, unit tests are required only for core business logic and utility functions (e.g., in `src/lib` or `src/utils`). UI components and pages will not have dedicated tests. Test files MUST use the `bun test` API, be named `*.spec.ts`, and be co-located with the source file.
+* **Code Style:** A consistent code style will be enforced using automated tools.
+
+## Workflow
+
+* **Version Control:** All code changes will be managed through a Git repository.
+
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution is the single source of truth for project principles. Any amendments must be proposed and agreed upon by the team.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.6.2 | **Ratified**: 2025-10-16 | **Last Amended**: 2025-10-16
