@@ -14,24 +14,21 @@ Sync Impact Report:
 ### I. Mobile-First PWA
 The project is a mobile-first progressive web app (PWA), ensuring a seamless experience on all devices.
 
-### II. Performance-Obsessed
-The application must be optimized for speed, with the goal of achieving a perfect 100 in the Lighthouse performance category.
-
-### III. Holistic Quality
-Strive for a perfect 100 Lighthouse score in accessibility, best practices, and SEO.
+### II. Perfect Lighthouse scores
+The application must be optimized for speed, accessibility with the goal of achieving a perfect 100 in every Lighthouse performance category.
 
 ### IV. Keep It Stupid Simple (KISS)
 All design and implementation decisions must follow the "Keep It Stupid Simple" (KISS) principle.
 
-### V. Clean Architecture
+### V. Architecture
 The codebase will adhere to a simplified interpretation of Clean Code and Atomic Design principles to ensure a decoupled, maintainable, and scalable component architecture.
 -   **Layered Components:** A strict layering system is enforced. Application-level components (e.g., pages, organisms) MUST only be built by composing components from the `base` and `ui` layers.
 -   **`src/components/base`:** This directory contains foundational layout components and "atoms" (e.g., `Container`, `HStack`, `Text`). These are the ONLY components allowed to directly use the underlying UI library (e.g., Chakra UI, Material UI) and are solely responsible for applying the project's design system (colors, typography, etc.).
 -   **`src/components/ui`:** This directory contains interactive UI elements and "molecules" (e.g., `Button`, `Card`, `Select`), which are composed from `base` components.
 -   **Strict Encapsulation:** Higher-level components (pages, organisms) MUST NOT directly access the underlying UI library. This encapsulation ensures that the UI library can be swapped without refactoring the entire application.
 
-### VI. Content as Code
-All application text (menus, sections, etc.) is managed as code. Content is stored in local Markdown files with front-matter within the `src/content` directory. This approach enables version control, collaboration, and compatibility with git-based CMS workflows. Internationalization (i18n) is handled via language-specific subfolders (e.g., `src/content/en`, `src/content/fr`).
+### VI. Local Content
+All application text (menus, sections, etc.) is managed as code and commited inside the git repository. Content is stored in Markdown files with front-matter inside the `src/content` directory. This approach enables version control, collaboration, and compatibility with git-based CMS workflows. Internationalization (i18n) is handled via language-specific subfolders (e.g., `src/content/en`, `src/content/fr`).
 
 ### VII. Web Standards First
 To maintain simplicity and leverage the modern web platform, this project exclusively targets evergreen browsers. Development MUST prioritize standardized, modern web APIs (e.g., `fetch`) over obsolete or non-standard alternatives. Any third-party library that relies on polyfills or deprecated features MUST be avoided to ensure the smallest possible bundle size and adherence to web standards.
@@ -62,7 +59,6 @@ To align with our principles of Performance and Simplicity (KISS), the following
 ## Workflow
 
 * **Version Control:** All code changes will be managed through a Git repository.
-
 
 ## Governance
 
