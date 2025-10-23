@@ -1,12 +1,12 @@
 # Agent Coding Guidelines
 
-This document summarizes the essential coding guidelines and principles for the **silent-places** project, as defined in the project constitution. All code contributions by agents MUST adhere to these rules.
+This document summarizes the essential coding guidelines and principles for the **silent-places** project, as defined in the project constitution. The full set of rules are inside the [constitution](.specify/memory/constitution.md) file.
 
 ## 1. Core Philosophy
 
-- **KISS (Keep It Stupid Simple):** Prioritize simplicity and avoid over-engineering. This is a solo project, and the workflow should be fast and lean.
-- **Performance-Obsessed:** The primary goal is a perfect 100 score across all Lighthouse categories (Performance, Accessibility, Best Practices, SEO).
 - **Mobile-First PWA:** Design and build for a mobile experience first.
+- **Performance and adhesion to best practices:** Achieve a perfect 100 score across all Lighthouse categories (Performance, Accessibility, Best Practices, SEO).
+- **KISS (Keep It Stupid Simple):** Prioritize simplicity and avoid over-engineering. This is a solo project, and the workflow should be fast and lean _but without compromise on maintanability_ : separation of concerns is key to allow refactoring every area.
 
 ## 2. Technical Stack
 
