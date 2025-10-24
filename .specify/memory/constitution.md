@@ -54,13 +54,32 @@ All design and implementation decisions must follow the "Keep It Stupid Simple" 
 The codebase will adhere to a simplified interpretation of Clean Code and Atomic Design principles to ensure a decoupled, maintainable, and scalable architecture. The architecture is structured as follows:
 
 #### **Frontend: Atomic Design Principles**
-The frontend is organized using Atomic Design principles to ensure a clear hierarchy and reusability of components:
+The frontend components are organized following the Atomic Design principles to provide a clear hierarchy:
 
-- **Layered Components:**
-  - **`src/components/base` (Atoms):** Foundational layout components and "atoms" (e.g., `Container`, `HStack`, `Text`). 
-  - **`src/components/ui` (Molecules):** Interactive UI elements and "molecules" (e.g., `Button`, `Card`, `Select`), which are composed from `base` components.
-  - **`src/components/app` (Organisms):** App-specific block elements (e.g., `HeroSection`, `Testimony`, `MainHeader`), composed from `base` and `ui` components.
-  - **`src/routes/pages` (Pages):** Page-level components that compose organisms and define the structure of individual pages.
+```
+src/
+├── components/
+│   ├── base/         # (Atoms) Foundational layout components
+│   │   ├── Container
+│   │   ├── Grid
+│   │   ├── HStack
+│   │   ├── VStack
+│   │   ├── Text
+│   │   └── ...
+│   ├── ui/           # (Molecules) Interactive UI elements
+│   │   ├── Button
+│   │   ├── Card
+│   │   ├── Select
+│   │   └── ...
+│   └── app/          # (Organisms) App-specific block elements
+│       ├── HeroSection
+│       ├── MapSection
+│       ├── MainHeader
+│       └── ...
+└── routes/
+    └── pages/        # (Pages) Page-level components that compose organisms
+        └── ...
+```
 
 - **Strict Encapsulation:** Higher-level components (pages, organisms) MUST NOT directly access the underlying UI/styling library. This encapsulation ensures that the UI library can be swapped by rewriting base and ui without refactoring the entire application.
 
