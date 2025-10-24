@@ -55,19 +55,31 @@ src/
 ├── components/
 │   ├── base/              # Atoms (e.g., Container, Text, Heading)
 │   ├── ui/                # Molecules (e.g., Button, Card, Input)
-│   └── app/               # Organisms (e.g., PlaceForm, SearchResults)
+│   └── app/               # Organisms (e.g., HeroSection, PlaceForm, SearchResults)
 ├── content/               # Static content (Markdown with front-matter)
-│   ├── en/
-│   │   ├── pages/
-│   │   └── navigation/
-│   ├── fr/
-│   └── jp/
+│   ├── pages/
+│   │   ├── home.md
+│   │   ├── home.fr.md
+│   │   └── home.jp.md
+│   └── site/
+│       ├── header.md
+│       └── header.fr.md
 ├── entities/              # Shared data models and validation schemas
 ├── routes/
-│   ├── api/               # SvelteKit API routes
+│   ├── api/
 │   │   ├── places/
-│   │   └── [...]
-│   └── [...]              # SvelteKit page routes
+│   │   │   ├── +server.ts             # GET /api/places (list places)
+│   │   │   └── [id]/
+│   │   │       └── +server.ts         # GET /api/places/[id] (get place by id)
+│   │   └── submit/
+│   │       └── +server.ts             # POST /api/submit (submit a new place)
+│   └── pages/
+│       ├── +page.svelte               # Home page
+│       ├── places/
+│       │   └── [id]/
+│       │       └── +page.svelte       # Page to display a single place
+│       └── submit/
+│           └── +page.svelte           # Page with the form to submit a new place
 ├── lib/                   # Utility functions and shared logic
 └── services/              # Business logic services
 ```
